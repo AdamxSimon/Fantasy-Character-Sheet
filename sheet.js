@@ -13,6 +13,16 @@ async function save() {
   localStorage.setItem("currentExperience", $("#currentExperience").html());
   localStorage.setItem("requiredExperience", $("#requiredExperience").html());
 
+  //Attributes
+
+  $(".attributePoints").each((index, element) => {
+    localStorage.setItem(element.id, $("#" + element.id).html());
+  });
+
+  $(".attributeModifier").each((index, element) => {
+    localStorage.setItem(element.id, $("#" + element.id).html());
+  });
+
   // Display Message
 
   setTimeout(() => {
@@ -39,6 +49,16 @@ async function load() {
   $("#currentExperience").val(localStorage.getItem("currentExperience"));
   $("#requiredExperience").val(localStorage.getItem("requiredExperience"));
 
+  // Attributes
+
+  $(".attributePoints").each((index, element) => {
+    $("#" + element.id).html(localStorage.getItem(element.id));
+  });
+
+  $(".attributeModifier").each((index, element) => {
+    $("#" + element.id).html(localStorage.getItem(element.id));
+  });
+
   // Display Message
 
   setTimeout(() => {
@@ -55,11 +75,23 @@ async function load() {
 function decrement(id) {
   if (+$(id).html() > 0) {
     $(id).html(+$(id).html() - 1);
+    updateAttributeModifier(id, id + "Modifier");
   }
 }
 
 function increment(id) {
   $(id).html(+$(id).html() + 1);
+  updateAttributeModifier(id, id + "Modifier");
+}
+
+function updateAttributeModifier(attributeID, modID) {
+  const newValue = Math.floor((+$(attributeID).html() - 10) / 2);
+
+  if (newValue >= 0) {
+    $(modID).html("+" + newValue);
+  } else {
+    $(modID).html(newValue);
+  }
 }
 
 // Event Listeners
@@ -82,6 +114,23 @@ $(document).ready(() => {
 });
 
 $("input").change(() => {
+  save()
+    .then(() => {
+      setTimeout(() => {
+        $("#message").html("");
+      }, 2000);
+    })
+    .catch(() => {
+      setTimeout(() => {
+        $("#message").html("Unable To Save");
+      }, 2000);
+      setTimeout(() => {
+        $("#message").html("");
+      }, 3000);
+    });
+});
+
+$("button").click(() => {
   save()
     .then(() => {
       setTimeout(() => {
