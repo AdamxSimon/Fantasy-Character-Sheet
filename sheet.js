@@ -94,6 +94,34 @@ function updateAttributeModifier(attributeID, modID) {
   }
 }
 
+function updateSkillModifiers() {
+  const proficiencyBonus = +$(".proficiencyBonus").html();
+
+  $(".skillContainer").each((index, element) => {
+    if ($("#" + element.id).attr("active") === "true") {
+      $("#" + element.id + "Modifier").html(
+        +$(
+          "#" +
+            $("#" + element.id)
+              .find(".relevantAttribute")
+              .html() +
+            "Modifier"
+        ).html() + proficiencyBonus
+      );
+    } else {
+      $("#" + element.id + "Modifier").html(
+        $(
+          "#" +
+            $("#" + element.id)
+              .find(".relevantAttribute")
+              .html() +
+            "Modifier"
+        ).html()
+      );
+    }
+  });
+}
+
 // Event Listeners
 
 $(document).ready(() => {
@@ -131,6 +159,7 @@ $("input").change(() => {
 });
 
 $("button").click(() => {
+  updateSkillModifiers();
   save()
     .then(() => {
       setTimeout(() => {
@@ -145,4 +174,13 @@ $("button").click(() => {
         $("#message").html("");
       }, 3000);
     });
+});
+
+$(".skillContainer").click((event) => {
+  $(event.target).toggleClass("active");
+  $(event.target).attr(
+    "active",
+    $(event.target).attr("active") === "true" ? "false" : "true"
+  );
+  updateSkillModifiers();
 });

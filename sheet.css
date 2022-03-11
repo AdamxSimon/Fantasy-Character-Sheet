@@ -14,8 +14,11 @@ body {
 }
 
 body {
-  height: fit-content;
   background-image: linear-gradient(black, gray);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 input {
@@ -77,7 +80,8 @@ h2 {
   align-items: center;
 }
 
-.attributeContainer {
+.attributeContainer,
+.skillContainer {
   height: 128px;
   width: 120px;
   border: 2px solid white;
@@ -89,7 +93,8 @@ h2 {
   text-align: center;
 }
 
-.attributeContainer > label {
+.attributeContainer > label,
+.skillContainer > label {
   font-weight: bold;
 }
 
@@ -98,6 +103,12 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.attributePoints,
+.skillModifier {
+  font-size: 36px;
+  font-weight: bold;
 }
 
 .pointsButton {
@@ -119,7 +130,16 @@ h2 {
   color: black;
 }
 
-.attributePoints {
-  font-size: 36px;
-  font-weight: bold;
+.relevantAttributeContainer {
+  display: flex;
+}
+
+.active {
+  background-color: white;
+}
+
+.active > *,
+.active > * > * {
+  pointer-events: none;
+  color: black;
 }
