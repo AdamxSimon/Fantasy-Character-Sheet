@@ -1,0 +1,68 @@
+/* Master Styles */
+
+* {
+  padding: 0px;
+  margin: 0px;
+  font-family: Cambria;
+  color: white;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: fit-content;
+  background-image: linear-gradient(black, gray);
+}
+
+input {
+  background: transparent;
+  border-style: none;
+  border-radius: 2px;
+  font-size: inherit;
+}
+
+input:hover {
+  outline: 2px solid white;
+}
+
+/* Section Styles */
+
+#message {
+  height: fit-content;
+  width: 72px;
+  padding: 16px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  text-align: center;
+}
+
+h2 {
+  padding: 16px;
+  text-decoration: underline;
+}
+
+.section {
+  padding: 8px;
+}
+
+#info {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.infoContainer {
+  height: 48px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#experienceContainer {
+  display: flex;
+}

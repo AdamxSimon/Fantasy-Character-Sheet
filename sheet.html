@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="sheet.css" />
+    <title>Fantasy Character Sheet</title>
+    <script type="text/javascript" src="jquery.js"></script>
+  </head>
+  <body>
+    <div id="sheet">
+      <div id="message"></div>
+      <h2>Player Information</h2>
+      <div class="section" id="info">
+        <div class="infoContainer">
+          <label for="name">Name:</label>
+          <input id="name" type="text" />
+        </div>
+        <div class="infoContainer">
+          <label for="age">Age:</label>
+          <input id="age" type="text" />
+        </div>
+        <div class="infoContainer">
+          <label for="gender">Gender:</label>
+          <input id="gender" type="text" />
+        </div>
+        <div class="infoContainer">
+          <label for="race">Race:</label>
+          <input id="race" type="text" />
+        </div>
+        <div class="infoContainer">
+          <label for="class">Class:</label>
+          <input id="class" type="text" />
+        </div>
+        <div class="infoContainer">
+          <label for="background">Background:</label>
+          <input id="background" type="text" />
+        </div>
+        <div class="infoContainer">
+          <label>Level:</label>
+          <div id="level">1</div>
+        </div>
+        <div class="infoContainer">
+          <label>Experience:</label>
+          <div id="experienceContainer">
+            <div id="currentExperience">0</div>
+            /
+            <div id="requiredExperience">1000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="sheet.js"></script>
+</html>
