@@ -52,6 +52,16 @@ async function load() {
   }, 1500);
 }
 
+function decrement(id) {
+  if (+$(id).html() > 0) {
+    $(id).html(+$(id).html() - 1);
+  }
+}
+
+function increment(id) {
+  $(id).html(+$(id).html() + 1);
+}
+
 // Event Listeners
 
 $(document).ready(() => {

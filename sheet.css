@@ -22,7 +22,6 @@ input {
   background: transparent;
   border-style: none;
   border-radius: 2px;
-  font-size: inherit;
 }
 
 input:hover {
@@ -63,6 +62,64 @@ h2 {
   justify-content: space-evenly;
 }
 
+.infoContainer > input {
+  font-size: inherit;
+}
+
 #experienceContainer {
   display: flex;
+}
+
+#attributes {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.attributeContainer {
+  height: 128px;
+  width: 120px;
+  border: 2px solid white;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+
+.attributeContainer > label {
+  font-weight: bold;
+}
+
+.pointsContainer {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pointsButton {
+  height: 24px;
+  width: 24px;
+  background: transparent;
+  border-style: none;
+  border: 2px solid white;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.pointsButton:active {
+  background-color: white;
+  color: black;
+}
+
+.attributePoints {
+  font-size: 36px;
+  font-weight: bold;
 }
