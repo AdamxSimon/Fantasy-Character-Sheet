@@ -130,6 +130,11 @@ h2 {
   color: black;
 }
 
+#skills {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
 .relevantAttributeContainer {
   display: flex;
 }
