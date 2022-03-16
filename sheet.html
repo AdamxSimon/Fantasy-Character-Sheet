@@ -55,135 +55,269 @@
 
       <h2>Attributes</h2>
 
+      <div class="attributePointsAvailableContainer">
+        <label>Points Available:</label>
+        <div class="attributePointsAvailable"></div>
+      </div>
+
       <div class="section" id="attributes">
         <div class="attributeContainer">
           <label>Strength</label>
           <div class="pointsContainer">
-            <button class="pointsButton" onclick="decrement('#strength')">−</button>
-            <div class="attributePoints" id="strength">8</div>
-            <button class="pointsButton" onclick="increment('#strength')">+</button>
+            <button class="pointsButton" onclick="decrement('#Strength')">
+              −
+            </button>
+            <div class="attributePoints" id="Strength"></div>
+            <button class="pointsButton" onclick="increment('#Strength')">
+              +
+            </button>
           </div>
-          <div class="attributeModifier" id="strengthModifier">-1</div>
+          <div class="attributeModifier" id="StrengthModifier"></div>
         </div>
+
         <div class="attributeContainer">
           <label>Dexterity</label>
           <div class="pointsContainer">
-            <button class="pointsButton" onclick="decrement('#dexterity')">−</button>
-            <div class="attributePoints" id="dexterity">8</div>
-            <button class="pointsButton" onclick="increment('#dexterity')">+</button>
+            <button class="pointsButton" onclick="decrement('#Dexterity')">
+              −
+            </button>
+            <div class="attributePoints" id="Dexterity"></div>
+            <button class="pointsButton" onclick="increment('#Dexterity')">
+              +
+            </button>
           </div>
-          <div class="attributeModifier" id="dexterityModifier">-1</div>
+          <div class="attributeModifier" id="DexterityModifier"></div>
         </div>
+
         <div class="attributeContainer">
           <label>Constitution</label>
           <div class="pointsContainer">
-            <button class="pointsButton" onclick="decrement('#constitution')">−</button>
-            <div class="attributePoints" id="constitution">8</div>
-            <button class="pointsButton" onclick="increment('#constitution')">+</button>
+            <button class="pointsButton" onclick="decrement('#Constitution')">
+              −
+            </button>
+            <div class="attributePoints" id="Constitution"></div>
+            <button class="pointsButton" onclick="increment('#Constitution')">
+              +
+            </button>
           </div>
-          <div class="attributeModifier" id="constitutionModifier">-1</div>
+          <div class="attributeModifier" id="ConstitutionModifier"></div>
         </div>
+
         <div class="attributeContainer">
           <label>Intelligence</label>
           <div class="pointsContainer">
-            <button class="pointsButton" onclick="decrement('#intelligence')">−</button>
-            <div class="attributePoints" id="intelligence">8</div>
-            <button class="pointsButton" onclick="increment('#intelligence')">+</button>
+            <button class="pointsButton" onclick="decrement('#Intelligence')">
+              −
+            </button>
+            <div class="attributePoints" id="Intelligence"></div>
+            <button class="pointsButton" onclick="increment('#Intelligence')">
+              +
+            </button>
           </div>
-          <div class="attributeModifier" id="intelligenceModifier">-1</div>
+          <div class="attributeModifier" id="IntelligenceModifier"></div>
         </div>
+
         <div class="attributeContainer">
           <label>Wisdom</label>
           <div class="pointsContainer">
-            <button class="pointsButton" onclick="decrement('#wisdom')">−</button>
-            <div class="attributePoints" id="wisdom">8</div>
-            <button class="pointsButton" onclick="increment('#wisdom')">+</button>
+            <button class="pointsButton" onclick="decrement('#Wisdom')">
+              −
+            </button>
+            <div class="attributePoints" id="Wisdom"></div>
+            <button class="pointsButton" onclick="increment('#Wisdom')">
+              +
+            </button>
           </div>
-          <div class="attributeModifier" id="wisdomModifier">-1</div>
+          <div class="attributeModifier" id="WisdomModifier"></div>
         </div>
+
         <div class="attributeContainer">
           <label>Charisma</label>
           <div class="pointsContainer">
-            <button class="pointsButton" onclick="decrement('#charisma')">−</button>
-            <div class="attributePoints" id="charisma">8</div>
-            <button class="pointsButton" onclick="increment('#charisma')">+</button>
+            <button class="pointsButton" onclick="decrement('#Charisma')">
+              −
+            </button>
+            <div class="attributePoints" id="Charisma"></div>
+            <button class="pointsButton" onclick="increment('#Charisma')">
+              +
+            </button>
           </div>
-          <div class="attributeModifier" id="charismaModifier">-1</div>
+          <div class="attributeModifier" id="CharismaModifier"></div>
         </div>
       </div>
 
-      <div class="proficiencyBonus">+2</div>
-
       <h2>Skills</h2>
+
+      <div class="proficiencyBonusContainer">
+        <label>Proficiency Bonus:</label>
+        <div class="proficiencyBonus">+2</div>
+      </div>
 
       <div class="section" id="skills">
         <div class="skillContainer" id="acrobatics">
           <label>Acrobatics</label>
-          <div class="skillModifier" id="acrobaticsModifier">-1</div>
+          <div class="skillModifier" id="acrobaticsModifier"></div>
           <div class="relevantAttributeContainer">
-            (<div class="relevantAttribute">dexterity</div>)
+            (
+            <div class="relevantAttribute">Dexterity</div>
+            )
           </div>
         </div>
         <div class="skillContainer" id="animalHandling">
           <label>Animal Handling</label>
-          <div class="skillModifier" id="animalHandlingModifier">-1</div>
+          <div class="skillModifier" id="animalHandlingModifier"></div>
           <div class="relevantAttributeContainer">
-            (<div class="relevantAttribute">wisdom</div>)
+            (
+            <div class="relevantAttribute">Wisdom</div>
+            )
           </div>
         </div>
-        <div class="skillContainer" id="acrobatics">
-          <label>Acrobatics</label>
-          <div class="skillModifier" id="acrobaticsModifier">-1</div>
+        <div class="skillContainer" id="arcana">
+          <label>Arcana</label>
+          <div class="skillModifier" id="arcanaModifier"></div>
           <div class="relevantAttributeContainer">
-            (<div class="relevantAttribute">dexterity</div>)
+            (
+            <div class="relevantAttribute">Intelligence</div>
+            )
           </div>
         </div>
-        <div class="skillContainer" id="acrobatics">
-          <label>Acrobatics</label>
-          <div class="skillModifier" id="acrobaticsModifier">-1</div>
+        <div class="skillContainer" id="athletics">
+          <label>Athletics</label>
+          <div class="skillModifier" id="athleticsModifier"></div>
           <div class="relevantAttributeContainer">
-            (<div class="relevantAttribute">dexterity</div>)
+            (
+            <div class="relevantAttribute">Strength</div>
+            )
           </div>
         </div>
-        <div class="skillContainer" id="acrobatics">
-          <label>Acrobatics</label>
-          <div class="skillModifier" id="acrobaticsModifier">-1</div>
+        <div class="skillContainer" id="deception">
+          <label>Deception</label>
+          <div class="skillModifier" id="deceptionModifier"></div>
           <div class="relevantAttributeContainer">
-            (<div class="relevantAttribute">dexterity</div>)
+            (
+            <div class="relevantAttribute">Charisma</div>
+            )
           </div>
         </div>
-        <div class="skillContainer" id="acrobatics">
-          <label>Acrobatics</label>
-          <div class="skillModifier" id="acrobaticsModifier">-1</div>
+        <div class="skillContainer" id="history">
+          <label>History</label>
+          <div class="skillModifier" id="historyModifier"></div>
           <div class="relevantAttributeContainer">
-            (<div class="relevantAttribute">dexterity</div>)
+            (
+            <div class="relevantAttribute">Intelligence</div>
+            )
           </div>
         </div>
-        <div class="skillContainer" id="acrobatics">
-          <label>Acrobatics</label>
-          <div class="skillModifier" id="acrobaticsModifier">-1</div>
+        <div class="skillContainer" id="insight">
+          <label>Insight</label>
+          <div class="skillModifier" id="insightModifier"></div>
           <div class="relevantAttributeContainer">
-            (<div class="relevantAttribute">dexterity</div>)
+            (
+            <div class="relevantAttribute">Wisdom</div>
+            )
           </div>
         </div>
-        <div class="skillContainer" id="acrobatics">
-          <label>Acrobatics</label>
-          <div class="skillModifier" id="acrobaticsModifier">-1</div>
+        <div class="skillContainer" id="intimidation">
+          <label>Intimidation</label>
+          <div class="skillModifier" id="intimidationModifier"></div>
           <div class="relevantAttributeContainer">
-            (<div class="relevantAttribute">dexterity</div>)
+            (
+            <div class="relevantAttribute">Charisma</div>
+            )
           </div>
         </div>
-        <div class="skillContainer" id="acrobatics">
-          <label>Acrobatics</label>
-          <div class="skillModifier" id="acrobaticsModifier">-1</div>
+        <div class="skillContainer" id="investigation">
+          <label>Investigation</label>
+          <div class="skillModifier" id="investigationModifier"></div>
           <div class="relevantAttributeContainer">
-            (<div class="relevantAttribute">dexterity</div>)
+            (
+            <div class="relevantAttribute">Intelligence</div>
+            )
+          </div>
+        </div>
+        <div class="skillContainer" id="medicine">
+          <label>Medicine</label>
+          <div class="skillModifier" id="medicineModifier"></div>
+          <div class="relevantAttributeContainer">
+            (
+            <div class="relevantAttribute">Wisdom</div>
+            )
+          </div>
+        </div>
+        <div class="skillContainer" id="nature">
+          <label>Nature</label>
+          <div class="skillModifier" id="natureModifier"></div>
+          <div class="relevantAttributeContainer">
+            (
+            <div class="relevantAttribute">Intelligence</div>
+            )
+          </div>
+        </div>
+        <div class="skillContainer" id="perception">
+          <label>Perception</label>
+          <div class="skillModifier" id="perceptionModifier"></div>
+          <div class="relevantAttributeContainer">
+            (
+            <div class="relevantAttribute">Wisdom</div>
+            )
+          </div>
+        </div>
+        <div class="skillContainer" id="performance">
+          <label>Performance</label>
+          <div class="skillModifier" id="performanceModifier"></div>
+          <div class="relevantAttributeContainer">
+            (
+            <div class="relevantAttribute">Charisma</div>
+            )
+          </div>
+        </div>
+        <div class="skillContainer" id="persuasion">
+          <label>Persuasion</label>
+          <div class="skillModifier" id="persuasionModifier"></div>
+          <div class="relevantAttributeContainer">
+            (
+            <div class="relevantAttribute">Charisma</div>
+            )
+          </div>
+        </div>
+        <div class="skillContainer" id="religion">
+          <label>Religion</label>
+          <div class="skillModifier" id="religionModifier"></div>
+          <div class="relevantAttributeContainer">
+            (
+            <div class="relevantAttribute">Intelligence</div>
+            )
+          </div>
+        </div>
+        <div class="skillContainer" id="sleightOfHand">
+          <label>Sleight of Hand</label>
+          <div class="skillModifier" id="sleightOfHandModifier"></div>
+          <div class="relevantAttributeContainer">
+            (
+            <div class="relevantAttribute">Dexterity</div>
+            )
+          </div>
+        </div>
+        <div class="skillContainer" id="stealth">
+          <label>Stealth</label>
+          <div class="skillModifier" id="stealthModifier"></div>
+          <div class="relevantAttributeContainer">
+            (
+            <div class="relevantAttribute">Dexterity</div>
+            )
+          </div>
+        </div>
+        <div class="skillContainer" id="survival">
+          <label>Survival</label>
+          <div class="skillModifier" id="survivalModifier"></div>
+          <div class="relevantAttributeContainer">
+            (
+            <div class="relevantAttribute">Wisdom</div>
+            )
           </div>
         </div>
       </div>
     </div>
   </body>
   <script type="text/javascript" src="sheet.js"></script>
-  </script>
-  </script>
 </html>

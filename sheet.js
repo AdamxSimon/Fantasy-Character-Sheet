@@ -52,12 +52,24 @@ async function load() {
   // Attributes
 
   $(".attributePoints").each((index, element) => {
-    $("#" + element.id).html(localStorage.getItem(element.id));
+    if (localStorage.getItem(element.id)) {
+      $("#" + element.id).html(localStorage.getItem(element.id));
+    } else {
+      $("#" + element.id).html("8");
+    }
   });
 
   $(".attributeModifier").each((index, element) => {
-    $("#" + element.id).html(localStorage.getItem(element.id));
+    if (localStorage.getItem(element.id)) {
+      $("#" + element.id).html(localStorage.getItem(element.id));
+    } else {
+      $("#" + element.id).html("-1");
+    }
   });
+
+  // Skills
+
+  updateSkillModifiers();
 
   // Display Message
 
@@ -96,18 +108,23 @@ function updateAttributeModifier(attributeID, modID) {
 
 function updateSkillModifiers() {
   const proficiencyBonus = +$(".proficiencyBonus").html();
+  let newValue;
 
   $(".skillContainer").each((index, element) => {
     if ($("#" + element.id).attr("active") === "true") {
-      $("#" + element.id + "Modifier").html(
+      newValue =
         +$(
           "#" +
             $("#" + element.id)
               .find(".relevantAttribute")
               .html() +
             "Modifier"
-        ).html() + proficiencyBonus
-      );
+        ).html() + proficiencyBonus;
+      if (newValue >= 0) {
+        $("#" + element.id + "Modifier").html("+" + newValue);
+      } else {
+        $("#" + element.id + "Modifier").html(newValue);
+      }
     } else {
       $("#" + element.id + "Modifier").html(
         $(

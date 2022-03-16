@@ -73,11 +73,22 @@ h2 {
   display: flex;
 }
 
-#attributes {
+.attributePointsAvailableContainer,
+.proficiencyBonusContainer {
   padding: 16px;
   display: flex;
+}
+
+.attributePointsAvailableContainer > label,
+.proficiencyBonusContainer > label {
+  margin-right: 4px;
+}
+
+#attributes {
+  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(6, auto);
   justify-content: space-between;
-  align-items: center;
 }
 
 .attributeContainer,
@@ -131,12 +142,24 @@ h2 {
 }
 
 #skills {
+  padding: 16px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(6, auto);
+  grid-row-gap: 20px;
+  justify-content: space-between;
+}
+
+.skillContainer > label {
+  pointer-events: none;
+}
+
+.skillModifier {
+  pointer-events: none;
 }
 
 .relevantAttributeContainer {
   display: flex;
+  pointer-events: none;
 }
 
 .active {
