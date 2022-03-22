@@ -13,7 +13,7 @@ async function save() {
   localStorage.setItem("currentExperience", $("#currentExperience").html());
   localStorage.setItem("requiredExperience", $("#requiredExperience").html());
 
-  //Attributes
+  // Attributes
 
   $(".attributePoints").each((index, element) => {
     localStorage.setItem(element.id, $("#" + element.id).html());
@@ -21,6 +21,12 @@ async function save() {
 
   $(".attributeModifier").each((index, element) => {
     localStorage.setItem(element.id, $("#" + element.id).html());
+  });
+
+  // Skills
+
+  $(".skillContainer").each((index, element) => {
+    localStorage.setItem(element.id, $("#" + element.id).attr("active"));
   });
 
   // Display Message
@@ -68,6 +74,13 @@ async function load() {
   });
 
   // Skills
+
+  $(".skillContainer").each((index, element) => {
+    if (localStorage.getItem(element.id) === "true") {
+      $("#" + element.id).toggleClass("active");
+      $("#" + element.id).attr("active", true);
+    }
+  });
 
   updateSkillModifiers();
 
@@ -200,4 +213,19 @@ $(".skillContainer").click((event) => {
     $(event.target).attr("active") === "true" ? "false" : "true"
   );
   updateSkillModifiers();
+
+  save()
+    .then(() => {
+      setTimeout(() => {
+        $("#message").html("");
+      }, 2000);
+    })
+    .catch(() => {
+      setTimeout(() => {
+        $("#message").html("Unable To Save");
+      }, 2000);
+      setTimeout(() => {
+        $("#message").html("");
+      }, 3000);
+    });
 });
