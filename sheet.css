@@ -84,7 +84,8 @@ h2 {
   margin-right: 4px;
 }
 
-#attributes {
+#attributes,
+#equipment {
   padding: 16px;
   display: grid;
   grid-template-columns: repeat(6, auto);
@@ -105,7 +106,8 @@ h2 {
 }
 
 .attributeContainer > label,
-.skillContainer > label {
+.skillContainer > label,
+.slotContainer > label {
   font-weight: bold;
 }
 
@@ -162,6 +164,119 @@ h2 {
   pointer-events: none;
 }
 
+.slotContainer {
+  height: 154px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.equipmentSlot {
+  height: 128px;
+  width: 120px;
+  border: 2px solid white;
+  border-radius: 8px;
+}
+
+#inventory {
+  padding: 16px;
+}
+
+.button {
+  height: 32px;
+  width: 72px;
+  border: 2px solid white;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inventoryContainer {
+  height: 248px;
+  border: 2px solid white;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.inventoryContainer::-webkit-scrollbar {
+  display: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  position: relative;
+}
+
+th {
+  background: white;
+  position: sticky;
+  top: 0;
+  color: black;
+}
+
+th,
+td {
+  height: 12px;
+  padding: 4px;
+}
+
+td {
+  text-align: center;
+}
+
+td > input {
+  width: 100%;
+  text-align: center;
+}
+
+.optionsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.optionsContainer > .button {
+  height: 100%;
+  width: 45%;
+  margin: 0px;
+  font-size: 12px;
+}
+
+#notes {
+  padding: 16px;
+}
+
+textarea {
+  height: 500px;
+  width: 100%;
+  max-width: 100%;
+  background: transparent;
+  padding: 8px;
+  border: 2px solid white;
+  border-radius: 8px;
+  outline: none;
+  resize: none;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+textarea::-webkit-scrollbar {
+  display: none;
+}
+
 .active {
   background-color: white;
 }
@@ -169,5 +284,10 @@ h2 {
 .active > *,
 .active > * > * {
   pointer-events: none;
+  color: black;
+}
+
+.button:active {
+  background-color: white;
   color: black;
 }

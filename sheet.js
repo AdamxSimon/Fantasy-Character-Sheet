@@ -97,6 +97,12 @@ async function load() {
   }, 1500);
 }
 
+// Functionality
+
+function toggleDisplay(section) {
+  $(section).toggle("slow");
+}
+
 function decrement(id) {
   if (+$(id).html() > 0) {
     $(id).html(+$(id).html() - 1);
@@ -150,6 +156,20 @@ function updateSkillModifiers() {
       );
     }
   });
+}
+
+function addItem() {
+  $("#inventoryTable tr:last").after(
+    "<tr>" +
+      "<td height='12'><input /></td>" +
+      "<td height='12'><input /></td>" +
+      "<td height='12'><input /></td>" +
+      "<td height='12'><input /></td>" +
+      "<td height='12'><input /></td>" +
+      "<td height='12'><input /></td>" +
+      "<td height='12'><div class='optionsContainer'><div class='button'>Equip</div><div class='button'>Remove</div></div></td>" +
+      "</tr>"
+  );
 }
 
 // Event Listeners

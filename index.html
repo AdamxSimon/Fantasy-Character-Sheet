@@ -12,7 +12,7 @@
     <div id="sheet">
       <div id="message"></div>
 
-      <h2>Information</h2>
+      <h2 onClick="toggleDisplay('#info')">Information</h2>
 
       <div class="section" id="info">
         <div class="infoContainer">
@@ -53,7 +53,7 @@
         </div>
       </div>
 
-      <h2>Attributes</h2>
+      <h2 onClick="toggleDisplay('#attributes')">Attributes</h2>
 
       <div class="attributePointsAvailableContainer">
         <label>Points Available:</label>
@@ -146,7 +146,7 @@
         </div>
       </div>
 
-      <h2>Skills</h2>
+      <h2 onClick="toggleDisplay('#skills')">Skills</h2>
 
       <div class="proficiencyBonusContainer">
         <label>Proficiency Bonus:</label>
@@ -318,7 +318,59 @@
         </div>
       </div>
 
-      <h2>Equipment</h2>
+      <h2 onClick="toggleDisplay('#equipment')">Equipment</h2>
+
+      <div class="section" id="equipment">
+        <div class="slotContainer">
+          <label>Head</label>
+          <div class="equipmentSlot" id="head"></div>
+        </div>
+        <div class="slotContainer">
+          <label>Body</label>
+          <div class="equipmentSlot" id="body"></div>
+        </div>
+        <div class="slotContainer">
+          <label>Arms</label>
+          <div class="equipmentSlot" id="arms"></div>
+        </div>
+        <div class="slotContainer">
+          <label>Legs</label>
+          <div class="equipmentSlot" id="legs"></div>
+        </div>
+        <div class="slotContainer">
+          <label>Left Hand</label>
+          <div class="equipmentSlot" id="leftHand"></div>
+        </div>
+        <div class="slotContainer">
+          <label>Right Hand</label>
+          <div class="equipmentSlot" id="rightHand"></div>
+        </div>
+      </div>
+
+      <h2 onClick="toggleDisplay('#inventory')">Inventory</h2>
+
+      <div class="section" id="inventory">
+        <div class="button" onclick="addItem()">Add Item</div>
+        <div class="inventoryContainer">
+          <table id="inventoryTable">
+            <tr>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Accuracy</th>
+              <th>Attack</th>
+              <th>Defense</th>
+              <th>Value</th>
+              <th>Options</th>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <h2 onClick="toggleDisplay('#notes')">Notes</h2>
+
+      <div class="section" id="notes">
+        <textarea></textarea>
+      </div>
     </div>
   </body>
   <script type="text/javascript" src="sheet.js"></script>
