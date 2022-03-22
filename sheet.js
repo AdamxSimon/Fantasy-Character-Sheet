@@ -29,6 +29,41 @@ async function save() {
     localStorage.setItem(element.id, $("#" + element.id).attr("active"));
   });
 
+  // Inventory
+
+  const inventory = [];
+
+  $(".itemRow").each((index, element) => {
+    const item = {};
+
+    item.name = $("." + element.className)
+      .find(".itemName")
+      .val();
+    item.category = $("." + element.className)
+      .find(".itemCategory")
+      .val();
+    item.accuracy = $("." + element.className)
+      .find(".itemAccuracy")
+      .val();
+    item.attack = $("." + element.className)
+      .find(".itemAttack")
+      .val();
+    item.defense = $("." + element.className)
+      .find(".itemDefense")
+      .val();
+    item.value = $("." + element.className)
+      .find(".itemValue")
+      .val();
+
+    inventory.push(item);
+  });
+
+  localStorage.setItem("inventory", JSON.stringify(inventory));
+
+  // Notes
+
+  localStorage.setItem("notes", $("#notesInput").val());
+
   // Display Message
 
   setTimeout(() => {
@@ -83,6 +118,10 @@ async function load() {
   });
 
   updateSkillModifiers();
+
+  // Notes
+
+  $("#notesInput").val(localStorage.getItem("notes"));
 
   // Display Message
 
@@ -160,16 +199,26 @@ function updateSkillModifiers() {
 
 function addItem() {
   $("#inventoryTable tr:last").after(
-    "<tr>" +
-      "<td height='12'><input /></td>" +
-      "<td height='12'><input /></td>" +
-      "<td height='12'><input /></td>" +
-      "<td height='12'><input /></td>" +
-      "<td height='12'><input /></td>" +
-      "<td height='12'><input /></td>" +
-      "<td height='12'><div class='optionsContainer'><div class='button'>Equip</div><div class='button'>Remove</div></div></td>" +
+    "<tr class='itemRow'>" +
+      "<td height='12'><input class='itemName' /></td>" +
+      "<td height='12'><input class='itemCategory' /></td>" +
+      "<td height='12'><input class='itemAccuracy' /></td>" +
+      "<td height='12'><input class='itemAttack' /></td>" +
+      "<td height='12'><input class='itemDefense' /></td>" +
+      "<td height='12'><input class='itemValue' /></td>" +
+      "<td height='12'>" +
+      "<div class='optionsContainer'>" +
+      "<div class='button'>Equip</div>" +
+      "<div class='button' onclick='removeItem(this)'>Remove</div>" +
+      "</div>" +
+      "</td>" +
       "</tr>"
   );
+}
+
+function removeItem(button) {
+  const row = button.parentNode.parentNode.parentNode;
+  row.parentNode.removeChild(row);
 }
 
 // Event Listeners
@@ -234,6 +283,41 @@ $(".skillContainer").click((event) => {
   );
   updateSkillModifiers();
 
+  save()
+    .then(() => {
+      setTimeout(() => {
+        $("#message").html("");
+      }, 2000);
+    })
+    .catch(() => {
+      setTimeout(() => {
+        $("#message").html("Unable To Save");
+      }, 2000);
+      setTimeout(() => {
+        $("#message").html("");
+      }, 3000);
+    });
+});
+
+$(".button").click(() => {
+  updateSkillModifiers();
+  save()
+    .then(() => {
+      setTimeout(() => {
+        $("#message").html("");
+      }, 2000);
+    })
+    .catch(() => {
+      setTimeout(() => {
+        $("#message").html("Unable To Save");
+      }, 2000);
+      setTimeout(() => {
+        $("#message").html("");
+      }, 3000);
+    });
+});
+
+$("textarea").change(() => {
   save()
     .then(() => {
       setTimeout(() => {
