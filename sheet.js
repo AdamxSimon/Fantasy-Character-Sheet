@@ -66,6 +66,15 @@ async function save() {
 
   localStorage.setItem("inventory", JSON.stringify(inventory));
 
+  // Combat
+
+  localStorage.setItem("armorClass", $("#armorClass").val());
+  localStorage.setItem("initiative", $("#initiative").val());
+  localStorage.setItem("speed", $("#speed").val());
+  localStorage.setItem("currentHitPoints", $("#currentHitPoints").val());
+  localStorage.setItem("maxHitPoints", $("#maxHitPoints").val());
+  localStorage.setItem("hitDice", $("#hitDice").val());
+
   // Notes
 
   localStorage.setItem("notes", $("#notesInput").val());
@@ -147,6 +156,15 @@ async function load() {
       </tr>`
     );
   });
+
+  // Combat
+
+  $("#armorClass").val(localStorage.getItem("armorClass"));
+  $("#initiative").val(localStorage.getItem("initiative"));
+  $("#speed").val(localStorage.getItem("speed"));
+  $("#currentHitPoints").val(localStorage.getItem("currentHitPoints"));
+  $("#maxHitPoints").val(localStorage.getItem("maxHitPoints"));
+  $("#hitDice").val(localStorage.getItem("hitDice"));
 
   // Notes
 
@@ -340,6 +358,10 @@ $(".skillContainer").click((event) => {
         $("#message").html("");
       }, 3000);
     });
+});
+
+$("input[type=checkbox]").click((event) => {
+  $(event.target).toggleClass("active");
 });
 
 $(".button").click(() => {

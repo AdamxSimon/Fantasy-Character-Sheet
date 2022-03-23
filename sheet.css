@@ -78,7 +78,7 @@ textarea {
 
 /* Master Animations */
 
-input:hover {
+input[type="text"]:hover {
   outline: 2px solid white;
 }
 
@@ -214,7 +214,6 @@ input:hover {
   height: 248px;
   border: 2px solid white;
   margin-top: 8px;
-  overflow-x: scroll;
   overflow-y: scroll;
 }
 
