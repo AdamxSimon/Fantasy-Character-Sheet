@@ -105,7 +105,8 @@ input:hover {
 #attributes,
 #skills,
 #equipment,
-#dice {
+#dice,
+#combat {
   display: grid;
   grid-template-columns: repeat(6, auto);
   justify-content: space-between;
@@ -114,7 +115,8 @@ input:hover {
 
 .attributeContainer,
 .skillContainer,
-.equipmentSlot {
+.equipmentSlot,
+.combatContainer {
   height: 128px;
   width: 120px;
   border: 2px solid white;
@@ -128,6 +130,7 @@ input:hover {
 .attributeContainer > label,
 .skillContainer > label,
 .slotContainer > label,
+.combatContainer > label,
 .dieContainer > label {
   font-weight: bold;
 }
@@ -235,6 +238,13 @@ td > input {
   height: 100%;
   width: 45%;
   margin: 0px;
+}
+
+.combatContainer > input {
+  height: fit-content;
+  width: 80%;
+  font-size: 64px;
+  text-align: center;
 }
 
 .die {
