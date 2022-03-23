@@ -250,6 +250,20 @@ function removeItem(button) {
   row.parentNode.removeChild(row);
 }
 
+function roll(die) {
+  let rolls = 0;
+  let time = 100;
+
+  while (rolls <= 20) {
+    let number = Math.floor(Math.random() * die) + 1;
+    setTimeout(() => {
+      $("#d" + die).html(number);
+    }, time);
+    rolls++;
+    time += 100;
+  }
+}
+
 // Event Listeners
 
 $(document).ready(() => {
