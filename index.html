@@ -372,21 +372,63 @@
       <h2 onClick="toggleDisplay('#combat')">Combat</h2>
 
       <div class="section" id="combat">
-        <div class="combatContainer">
+        <div class="slotContainer">
           <label>Armor Class</label>
-          <input id="armorClass" />
+          <div class="combatContainer">
+            <input id="armorClass" />
+          </div>
         </div>
-        <div class="combatContainer">
+        <div class="slotContainer">
           <label>Initiative</label>
-          <input id="initiative" />
+          <div class="combatContainer">
+            <input id="initiative" />
+          </div>
         </div>
-        <div class="combatContainer">
+        <div class="slotContainer">
           <label>Speed</label>
-          <input id="speed" />
+          <div class="combatContainer">
+            <input id="speed" />
+          </div>
         </div>
-        <div class="combatContainer"></div>
-        <div class="combatContainer"></div>
-        <div class="combatContainer"></div>
+        <div class="slotContainer">
+          <label>Hit Points</label>
+          <div class="combatContainer">
+            <div id="hitPointsContainer">
+              <input />
+              <hr />
+              <input />
+            </div>
+          </div>
+        </div>
+        <div class="slotContainer">
+          <label>Hit Dice</label>
+          <div class="combatContainer">
+            <input id="hitDice" />
+          </div>
+        </div>
+        <div class="slotContainer">
+          <label>Death Saves</label>
+          <div class="combatContainer">
+            <div id="deathSavesContainer">
+              <div class="deathSavesChecks">
+                <label>Success</label>
+                <div class="checks">
+                  <input type="checkbox" />
+                  <input type="checkbox" />
+                  <input type="checkbox" />
+                </div>
+              </div>
+              <div class="deathSavesChecks">
+                <label>Failure</label>
+                <div class="checks">
+                  <input type="checkbox" />
+                  <input type="checkbox" />
+                  <input type="checkbox" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <h2 onClick="toggleDisplay('#notes')">Notes</h2>
