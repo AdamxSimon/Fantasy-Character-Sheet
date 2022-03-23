@@ -104,7 +104,8 @@ input:hover {
 
 #attributes,
 #skills,
-#equipment {
+#equipment,
+#dice {
   display: grid;
   grid-template-columns: repeat(6, auto);
   justify-content: space-between;
@@ -126,7 +127,8 @@ input:hover {
 .infoContainer > label,
 .attributeContainer > label,
 .skillContainer > label,
-.slotContainer > label {
+.slotContainer > label,
+.dieContainer > label {
   font-weight: bold;
 }
 
@@ -171,7 +173,8 @@ input:hover {
   display: flex;
 }
 
-.slotContainer {
+.slotContainer,
+.dieContainer {
   height: 154px;
   display: flex;
   flex-direction: column;
@@ -232,6 +235,17 @@ td > input {
   height: 100%;
   width: 45%;
   margin: 0px;
+}
+
+.die {
+  height: 120px;
+  width: 120px;
+  border: 2px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 64px;
+  font-weight: bold;
 }
 
 /* Section Animations */
