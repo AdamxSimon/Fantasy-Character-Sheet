@@ -39,9 +39,27 @@ h2 {
 
 input {
   background: transparent;
+  padding: 2px;
   border-radius: 2px;
   border-style: none;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   font-size: inherit;
+}
+
+textarea {
+  height: 500px;
+  width: 100%;
+  background: transparent;
+  padding: 8px;
+  border: 2px solid white;
+  outline: none;
+  resize: none;
+  overflow-y: scroll;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* Master Animations */
@@ -54,8 +72,8 @@ input:hover {
 
 #message {
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 0vw;
+  right: 0vw;
 }
 
 #info {
@@ -175,6 +193,8 @@ input:hover {
 .inventoryContainer {
   height: 248px;
   border: 2px solid white;
+  margin-top: 8px;
+  overflow-x: scroll;
   overflow-y: scroll;
 }
 
@@ -212,19 +232,6 @@ td > input {
   height: 100%;
   width: 45%;
   margin: 0px;
-}
-
-textarea {
-  height: 500px;
-  width: 100%;
-  background: transparent;
-  border: 2px solid white;
-  outline: none;
-  resize: none;
-  overflow-y: scroll;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
 }
 
 /* Section Animations */

@@ -38,21 +38,27 @@ async function save() {
 
     item.name = $("." + element.className)
       .find(".itemName")
+      .eq(index)
       .val();
     item.category = $("." + element.className)
       .find(".itemCategory")
+      .eq(index)
       .val();
     item.accuracy = $("." + element.className)
       .find(".itemAccuracy")
+      .eq(index)
       .val();
     item.attack = $("." + element.className)
       .find(".itemAttack")
+      .eq(index)
       .val();
     item.defense = $("." + element.className)
       .find(".itemDefense")
+      .eq(index)
       .val();
     item.value = $("." + element.className)
       .find(".itemValue")
+      .eq(index)
       .val();
 
     inventory.push(item);
@@ -118,6 +124,29 @@ async function load() {
   });
 
   updateSkillModifiers();
+
+  // Inventory
+
+  const inventory = JSON.parse(localStorage.getItem("inventory"));
+
+  inventory.forEach((item) => {
+    $("#inventoryTable tr:last").after(
+      `<tr class='itemRow'>
+        <td height='12'><input class='itemName' placeholder='Name' value="${item.name}" /></td>
+        <td height='12'><input class='itemCategory' placeholder='Category' value="${item.category}" /></td>
+        <td height='12'><input class='itemAccuracy' placeholder='Accuracy' value="${item.accuracy}" /></td>
+        <td height='12'><input class='itemAttack' placeholder='Attack' value="${item.attack}" /></td>
+        <td height='12'><input class='itemDefense' placeholder='Defense' value="${item.defense}" /></td>
+        <td height='12'><input class='itemValue' placeholder='Value' value="${item.value}" /></td>
+        <td height='12'>
+          <div class='optionsContainer'>
+            <div class='button'>Equip</div>
+            <div class='button' onclick='removeItem(this)'>Remove</div>
+          </div>
+        </td>
+      </tr>`
+    );
+  });
 
   // Notes
 
@@ -200,12 +229,12 @@ function updateSkillModifiers() {
 function addItem() {
   $("#inventoryTable tr:last").after(
     "<tr class='itemRow'>" +
-      "<td height='12'><input class='itemName' /></td>" +
-      "<td height='12'><input class='itemCategory' /></td>" +
-      "<td height='12'><input class='itemAccuracy' /></td>" +
-      "<td height='12'><input class='itemAttack' /></td>" +
-      "<td height='12'><input class='itemDefense' /></td>" +
-      "<td height='12'><input class='itemValue' /></td>" +
+      "<td height='12'><input class='itemName' placeholder='Name' /></td>" +
+      "<td height='12'><input class='itemCategory' placeholder='Category' /></td>" +
+      "<td height='12'><input class='itemAccuracy' placeholder='Accuracy' /></td>" +
+      "<td height='12'><input class='itemAttack' placeholder='Attack'/></td>" +
+      "<td height='12'><input class='itemDefense' placeholder='Defense' /></td>" +
+      "<td height='12'><input class='itemValue' placeholder='Value' /></td>" +
       "<td height='12'>" +
       "<div class='optionsContainer'>" +
       "<div class='button'>Equip</div>" +
