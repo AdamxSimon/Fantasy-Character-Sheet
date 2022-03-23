@@ -2,15 +2,27 @@
 
 * {
   padding: 0px;
+  border-radius: 8px;
   margin: 0px;
   font-family: Cambria;
   color: white;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  user-select: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
 }
 
 html,
 body {
   height: 100%;
   width: 100%;
+}
+
+#sheet > * {
+  padding: 16px;
 }
 
 body {
@@ -21,11 +33,18 @@ body {
   background-size: cover;
 }
 
+h2 {
+  text-decoration: underline;
+}
+
 input {
   background: transparent;
-  border-style: none;
   border-radius: 2px;
+  border-style: none;
+  font-size: inherit;
 }
+
+/* Master Animations */
 
 input:hover {
   outline: 2px solid white;
@@ -34,27 +53,16 @@ input:hover {
 /* Section Styles */
 
 #message {
-  height: fit-content;
-  width: 72px;
-  padding: 16px;
   position: absolute;
   top: 0px;
   right: 0px;
-  text-align: center;
-}
-
-h2 {
-  padding: 16px;
-  text-decoration: underline;
-}
-
-.section {
-  padding: 8px;
 }
 
 #info {
+  padding: 8px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, auto);
+  overflow-x: scroll;
 }
 
 .infoContainer {
@@ -62,20 +70,12 @@ h2 {
   padding: 8px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
-.infoContainer > input {
-  font-size: inherit;
-}
-
-#experienceContainer {
-  display: flex;
-}
-
+#experienceContainer,
 .attributePointsAvailableContainer,
 .proficiencyBonusContainer {
-  padding: 16px;
   display: flex;
 }
 
@@ -85,26 +85,27 @@ h2 {
 }
 
 #attributes,
+#skills,
 #equipment {
-  padding: 16px;
   display: grid;
   grid-template-columns: repeat(6, auto);
   justify-content: space-between;
+  overflow-x: scroll;
 }
 
 .attributeContainer,
-.skillContainer {
+.skillContainer,
+.equipmentSlot {
   height: 128px;
   width: 120px;
   border: 2px solid white;
-  border-radius: 8px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  text-align: center;
 }
 
+.infoContainer > label,
 .attributeContainer > label,
 .skillContainer > label,
 .slotContainer > label {
@@ -131,37 +132,25 @@ h2 {
   border-style: none;
   border: 2px solid white;
   border-radius: 50%;
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 12px;
   font-weight: bold;
 }
 
-.pointsButton:active {
-  background-color: white;
-  color: black;
-}
-
 #skills {
-  padding: 16px;
-  display: grid;
-  grid-template-columns: repeat(6, auto);
   grid-row-gap: 20px;
-  justify-content: space-between;
 }
 
-.skillContainer > label {
+.skillContainer > label,
+.skillModifier,
+.relevantAttributeContainer {
   pointer-events: none;
-}
-
-.skillModifier {
-  pointer-events: none;
+  text-align: center;
 }
 
 .relevantAttributeContainer {
   display: flex;
-  pointer-events: none;
 }
 
 .slotContainer {
@@ -170,17 +159,6 @@ h2 {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-}
-
-.equipmentSlot {
-  height: 128px;
-  width: 120px;
-  border: 2px solid white;
-  border-radius: 8px;
-}
-
-#inventory {
-  padding: 16px;
 }
 
 .button {
@@ -197,21 +175,11 @@ h2 {
 .inventoryContainer {
   height: 248px;
   border: 2px solid white;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
   overflow-y: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.inventoryContainer::-webkit-scrollbar {
-  display: none;
 }
 
 table {
   width: 100%;
-  border-collapse: collapse;
   table-layout: fixed;
   position: relative;
 }
@@ -225,11 +193,7 @@ th {
 
 th,
 td {
-  height: 12px;
   padding: 4px;
-}
-
-td {
   text-align: center;
 }
 
@@ -248,33 +212,26 @@ td > input {
   height: 100%;
   width: 45%;
   margin: 0px;
-  font-size: 12px;
-}
-
-#notes {
-  padding: 16px;
 }
 
 textarea {
   height: 500px;
   width: 100%;
-  max-width: 100%;
   background: transparent;
-  padding: 8px;
   border: 2px solid white;
-  border-radius: 8px;
   outline: none;
   resize: none;
   overflow-y: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-textarea::-webkit-scrollbar {
-  display: none;
+/* Section Animations */
+
+.pointsButton:active {
+  background-color: white;
+  color: black;
 }
 
 .active {
