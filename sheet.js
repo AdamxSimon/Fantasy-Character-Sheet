@@ -29,42 +29,100 @@ async function save() {
     localStorage.setItem(element.id, $("#" + element.id).attr("active"));
   });
 
-  // Inventory
+  // Weapons
 
-  const inventory = [];
+  const weapons = [];
 
-  $(".itemRow").each((index, element) => {
+  $("#weaponsTable .weapon").each((index, element) => {
+    const weapon = {};
+
+    weapon.name = $("." + element.className)
+      .find(".name")
+      .eq(index)
+      .val();
+    weapon.damage = $("." + element.className)
+      .find(".damage")
+      .eq(index)
+      .val();
+    weapon.scaling = $("." + element.className)
+      .find(".scaling")
+      .eq(index)
+      .val();
+    weapon.properties = $("." + element.className)
+      .find(".properties")
+      .eq(index)
+      .val();
+    weapon.value = $("." + element.className)
+      .find(".value")
+      .eq(index)
+      .val();
+
+    weapons.push(weapon);
+  });
+
+  localStorage.setItem("weapons", JSON.stringify(weapons));
+
+  // Armor
+
+  const armor = [];
+
+  $("#armorTable .armorPiece").each((index, element) => {
+    const armorPiece = {};
+
+    armorPiece.name = $("." + element.className)
+      .find(".name")
+      .eq(index)
+      .val();
+    armorPiece.slot = $("." + element.className)
+      .find(".slot")
+      .eq(index)
+      .val();
+    armorPiece.defense = $("." + element.className)
+      .find(".defense")
+      .eq(index)
+      .val();
+    armorPiece.scaling = $("." + element.className)
+      .find(".scaling")
+      .eq(index)
+      .val();
+    armorPiece.properties = $("." + element.className)
+      .find(".properties")
+      .eq(index)
+      .val();
+    armorPiece.value = $("." + element.className)
+      .find(".value")
+      .eq(index)
+      .val();
+
+    armor.push(armorPiece);
+  });
+
+  localStorage.setItem("armor", JSON.stringify(armor));
+
+  // Items
+
+  const items = [];
+
+  $("#itemsTable .item").each((index, element) => {
     const item = {};
 
     item.name = $("." + element.className)
-      .find(".itemName")
+      .find(".name")
       .eq(index)
       .val();
-    item.category = $("." + element.className)
-      .find(".itemCategory")
-      .eq(index)
-      .val();
-    item.accuracy = $("." + element.className)
-      .find(".itemAccuracy")
-      .eq(index)
-      .val();
-    item.attack = $("." + element.className)
-      .find(".itemAttack")
-      .eq(index)
-      .val();
-    item.defense = $("." + element.className)
-      .find(".itemDefense")
+    item.description = $("." + element.className)
+      .find(".description")
       .eq(index)
       .val();
     item.value = $("." + element.className)
-      .find(".itemValue")
+      .find(".value")
       .eq(index)
       .val();
 
-    inventory.push(item);
+    items.push(item);
   });
 
-  localStorage.setItem("inventory", JSON.stringify(inventory));
+  localStorage.setItem("items", JSON.stringify(items));
 
   // Combat
 
@@ -134,19 +192,61 @@ async function load() {
 
   updateSkillModifiers();
 
-  // Inventory
+  // Weapons
 
-  const inventory = JSON.parse(localStorage.getItem("inventory"));
+  const weapons = JSON.parse(localStorage.getItem("weapons"));
 
-  inventory.forEach((item) => {
-    $("#inventoryTable tr:last").after(
-      `<tr class='itemRow'>
-        <td height='12'><input class='itemName' placeholder='Name' value="${item.name}" /></td>
-        <td height='12'><input class='itemCategory' placeholder='Category' value="${item.category}" /></td>
-        <td height='12'><input class='itemAccuracy' placeholder='Accuracy' value="${item.accuracy}" /></td>
-        <td height='12'><input class='itemAttack' placeholder='Attack' value="${item.attack}" /></td>
-        <td height='12'><input class='itemDefense' placeholder='Defense' value="${item.defense}" /></td>
-        <td height='12'><input class='itemValue' placeholder='Value' value="${item.value}" /></td>
+  weapons.forEach((weapon) => {
+    $("#weaponsTable tr:last").after(
+      `<tr class='weapon'>
+        <td height='12'><input class='name' placeholder='Name' value="${weapon.name}" /></td>
+        <td height='12'><input class='damage' placeholder='Damage' value="${weapon.damage}" /></td>
+        <td height='12'><input class='scaling' placeholder='Scaling' value="${weapon.scaling}" /></td>
+        <td height='12'><input class='properties' placeholder='Properties' value="${weapon.properties}" /></td>
+        <td height='12'><input class='value' placeholder='Value' value="${weapon.value}" /></td>
+        <td height='12'>
+          <div class='optionsContainer'>
+            <div class='button'>Equip</div>
+            <div class='button' onclick='removeItem(this)'>Remove</div>
+          </div>
+        </td>
+      </tr>`
+    );
+  });
+
+  // Weapons
+
+  const armor = JSON.parse(localStorage.getItem("armor"));
+
+  armor.forEach((armorPiece) => {
+    $("#armorTable tr:last").after(
+      `<tr class='armorPiece'>
+        <td height='12'><input class='name' placeholder='Name' value="${armorPiece.name}" /></td>
+        <td height='12'><input class='slot' placeholder='Slot' value="${armorPiece.slot}" /></td>
+        <td height='12'><input class='defense' placeholder='Defense' value="${armorPiece.defense}" /></td>
+        <td height='12'><input class='scaling' placeholder='Scaling' value="${armorPiece.scaling}" /></td>
+        <td height='12'><input class='properties' placeholder='Properties' value="${armorPiece.properties}" /></td>
+        <td height='12'><input class='value' placeholder='Value' value="${armorPiece.value}" /></td>
+        <td height='12'>
+          <div class='optionsContainer'>
+            <div class='button'>Equip</div>
+            <div class='button' onclick='removeItem(this)'>Remove</div>
+          </div>
+        </td>
+      </tr>`
+    );
+  });
+
+  // Items
+
+  const items = JSON.parse(localStorage.getItem("items"));
+
+  items.forEach((item) => {
+    $("#itemsTable tr:last").after(
+      `<tr class='item'>
+        <td height='12'><input class='name' placeholder='Name' value="${item.name}" /></td>
+        <td height='12'><input class='description' placeholder='Description' value="${item.description}" /></td>
+        <td height='12'><input class='value' placeholder='Value' value="${item.value}" /></td>
         <td height='12'>
           <div class='optionsContainer'>
             <div class='button'>Equip</div>
@@ -244,23 +344,61 @@ function updateSkillModifiers() {
   });
 }
 
-function addItem() {
-  $("#inventoryTable tr:last").after(
-    "<tr class='itemRow'>" +
-      "<td height='12'><input class='itemName' placeholder='Name' /></td>" +
-      "<td height='12'><input class='itemCategory' placeholder='Category' /></td>" +
-      "<td height='12'><input class='itemAccuracy' placeholder='Accuracy' /></td>" +
-      "<td height='12'><input class='itemAttack' placeholder='Attack'/></td>" +
-      "<td height='12'><input class='itemDefense' placeholder='Defense' /></td>" +
-      "<td height='12'><input class='itemValue' placeholder='Value' /></td>" +
-      "<td height='12'>" +
-      "<div class='optionsContainer'>" +
-      "<div class='button'>Equip</div>" +
-      "<div class='button' onclick='removeItem(this)'>Remove</div>" +
-      "</div>" +
-      "</td>" +
-      "</tr>"
-  );
+function addItem(table) {
+  switch (table) {
+    case "weapons":
+      $("#weaponsTable tr:last").after(
+        "<tr class='weapon'>" +
+          "<td height='12'><input class='name' placeholder='Name' /></td>" +
+          "<td height='12'><input class='damage' placeholder='Damage' /></td>" +
+          "<td height='12'><input class='scaling' placeholder='Scaling' /></td>" +
+          "<td height='12'><input class='properties' placeholder='Properties'/></td>" +
+          "<td height='12'><input class='value' placeholder='Value' /></td>" +
+          "<td height='12'>" +
+          "<div class='optionsContainer'>" +
+          "<div class='button'>Equip</div>" +
+          "<div class='button' onclick='removeItem(this)'>Remove</div>" +
+          "</div>" +
+          "</td>" +
+          "</tr>"
+      );
+      break;
+
+    case "armor":
+      $("#armorTable tr:last").after(
+        "<tr class='armorPiece'>" +
+          "<td height='12'><input class='name' placeholder='Name' /></td>" +
+          "<td height='12'><input class='slot' placeholder='Slot' /></td>" +
+          "<td height='12'><input class='defense' placeholder='Defense' /></td>" +
+          "<td height='12'><input class='scaling' placeholder='Scaling' /></td>" +
+          "<td height='12'><input class='properties' placeholder='Properties'/></td>" +
+          "<td height='12'><input class='value' placeholder='Value' /></td>" +
+          "<td height='12'>" +
+          "<div class='optionsContainer'>" +
+          "<div class='button'>Equip</div>" +
+          "<div class='button' onclick='removeItem(this)'>Remove</div>" +
+          "</div>" +
+          "</td>" +
+          "</tr>"
+      );
+      break;
+
+    case "items":
+      $("#itemsTable tr:last").after(
+        "<tr class='item'>" +
+          "<td height='12'><input class='name' placeholder='Name' /></td>" +
+          "<td height='12'><input class='description' placeholder='Description' /></td>" +
+          "<td height='12'><input class='value' placeholder='Value' /></td>" +
+          "<td height='12'>" +
+          "<div class='optionsContainer'>" +
+          "<div class='button'>Equip</div>" +
+          "<div class='button' onclick='removeItem(this)'>Remove</div>" +
+          "</div>" +
+          "</td>" +
+          "</tr>"
+      );
+      break;
+  }
 }
 
 function removeItem(button) {

@@ -347,21 +347,61 @@
         </div>
       </div>
 
-      <h2 onClick="toggleDisplay('#inventory')">Inventory</h2>
+      <h2 onClick="toggleDisplay('#weapons')">Weapons</h2>
 
-      <div class="section" id="inventory">
+      <div class="section" id="weapons">
         <div class="optionsContainer">
-          <div class="button" onclick="addItem()">Add Item</div>
+          <div class="button" onclick="addItem('weapons')">Add Item</div>
           <div class="button">Save</div>
         </div>
         <div class="inventoryContainer">
-          <table id="inventoryTable">
+          <table id="weaponsTable">
             <tr>
               <th>Name</th>
-              <th>Category</th>
-              <th>Accuracy</th>
-              <th>Attack</th>
+              <th>Damage</th>
+              <th>Scaling</th>
+              <th>Properties</th>
+              <th>Value</th>
+              <th>Options</th>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <h2 onClick="toggleDisplay('#armor')">Armor</h2>
+
+      <div class="section" id="armor">
+        <div class="optionsContainer">
+          <div class="button" onclick="addItem('armor')">Add Item</div>
+          <div class="button">Save</div>
+        </div>
+        <div class="inventoryContainer">
+          <table id="armorTable">
+            <tr>
+              <th>Name</th>
+              <th>Slot</th>
               <th>Defense</th>
+              <th>Scaling</th>
+              <th>Properties</th>
+              <th>Value</th>
+              <th>Options</th>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <h2 onClick="toggleDisplay('#items')">Items</h2>
+
+      <div class="section" id="items">
+        <div class="optionsContainer">
+          <div class="button" onclick="addItem('items')">Add Item</div>
+          <div class="button">Save</div>
+        </div>
+        <div class="inventoryContainer">
+          <table id="itemsTable">
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
               <th>Value</th>
               <th>Options</th>
             </tr>
