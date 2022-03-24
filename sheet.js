@@ -29,6 +29,8 @@ async function save() {
     localStorage.setItem(element.id, $("#" + element.id).attr("active"));
   });
 
+  // Equipment
+
   // Weapons
 
   const weapons = [];
@@ -206,8 +208,8 @@ async function load() {
         <td height='12'><input class='value' placeholder='Value' value="${weapon.value}" /></td>
         <td height='12'>
           <div class='optionsContainer'>
-            <div class='button'>Equip</div>
-            <div class='button' onclick='removeItem(this)'>Remove</div>
+            <div class='button' onclick='equip(this)'>Equip</div>
+            <div class='button' onclick='remove(this)'>Remove</div>
           </div>
         </td>
       </tr>`
@@ -229,8 +231,8 @@ async function load() {
         <td height='12'><input class='value' placeholder='Value' value="${armorPiece.value}" /></td>
         <td height='12'>
           <div class='optionsContainer'>
-            <div class='button'>Equip</div>
-            <div class='button' onclick='removeItem(this)'>Remove</div>
+            <div class='button' onclick='equip(this)'>Equip</div>
+            <div class='button' onclick='remove(this)'>Remove</div>
           </div>
         </td>
       </tr>`
@@ -249,8 +251,8 @@ async function load() {
         <td height='12'><input class='value' placeholder='Value' value="${item.value}" /></td>
         <td height='12'>
           <div class='optionsContainer'>
-            <div class='button'>Equip</div>
-            <div class='button' onclick='removeItem(this)'>Remove</div>
+            <div class='button' onclick='equip(this)'>Equip</div>
+            <div class='button' onclick='remove(this)'>Remove</div>
           </div>
         </td>
       </tr>`
@@ -356,8 +358,8 @@ function addItem(table) {
           "<td height='12'><input class='value' placeholder='Value' /></td>" +
           "<td height='12'>" +
           "<div class='optionsContainer'>" +
-          "<div class='button'>Equip</div>" +
-          "<div class='button' onclick='removeItem(this)'>Remove</div>" +
+          "<div class='button' onclick='equip(this)'>Equip</div>" +
+          "<div class='button' onclick='remove(this)'>Remove</div>" +
           "</div>" +
           "</td>" +
           "</tr>"
@@ -375,8 +377,8 @@ function addItem(table) {
           "<td height='12'><input class='value' placeholder='Value' /></td>" +
           "<td height='12'>" +
           "<div class='optionsContainer'>" +
-          "<div class='button'>Equip</div>" +
-          "<div class='button' onclick='removeItem(this)'>Remove</div>" +
+          "<div class='button' onclick='equip(this)'>Equip</div>" +
+          "<div class='button' onclick='remove(this)'>Remove</div>" +
           "</div>" +
           "</td>" +
           "</tr>"
@@ -391,8 +393,8 @@ function addItem(table) {
           "<td height='12'><input class='value' placeholder='Value' /></td>" +
           "<td height='12'>" +
           "<div class='optionsContainer'>" +
-          "<div class='button'>Equip</div>" +
-          "<div class='button' onclick='removeItem(this)'>Remove</div>" +
+          "<div class='button' onclick='equip(this)'>Equip</div>" +
+          "<div class='button' onclick='remove(this)'>Remove</div>" +
           "</div>" +
           "</td>" +
           "</tr>"
@@ -401,9 +403,54 @@ function addItem(table) {
   }
 }
 
-function removeItem(button) {
+function remove(button) {
   const row = button.parentNode.parentNode.parentNode;
   row.parentNode.removeChild(row);
+}
+
+function equip(button) {
+  const equipment = button.parentNode.parentNode.parentNode;
+
+  if (equipment.className === "weapon") {
+    let slot = document.getElementById("rightHand").id;
+
+    if (
+      !$("#leftHand").hasClass("active") &&
+      $("#rightHand").hasClass("active")
+    ) {
+      slot = "leftHand";
+    } else {
+      slot = "rightHand";
+    }
+
+    if (!$("#" + slot).hasClass("active")) {
+      $("#" + slot).toggleClass("active");
+    }
+
+    $("#" + slot + " .name").html($(equipment).find(".name").val());
+    $("#" + slot + " .damage").html($(equipment).find(".damage").val());
+    $("#" + slot + " .scaling").html($(equipment).find(".scaling").val());
+    $("#" + slot + " .properties").html($(equipment).find(".properties").val());
+  } else if (equipment.className === "armorPiece") {
+    const slot = $(equipment).find(".slot").val();
+
+    if (!$("#" + slot.toLowerCase()).hasClass("active")) {
+      $("#" + slot.toLowerCase()).toggleClass("active");
+    }
+
+    $("#" + slot.toLowerCase() + " .name").html(
+      $(equipment).find(".name").val()
+    );
+    $("#" + slot.toLowerCase() + " .defense").html(
+      $(equipment).find(".defense").val()
+    );
+    $("#" + slot.toLowerCase() + " .scaling").html(
+      $(equipment).find(".scaling").val()
+    );
+    $("#" + slot.toLowerCase() + " .properties").html(
+      $(equipment).find(".properties").val()
+    );
+  }
 }
 
 function roll(die) {
