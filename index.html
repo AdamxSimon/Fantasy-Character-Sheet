@@ -40,16 +40,12 @@
           <input id="background" type="text" />
         </div>
         <div class="infoContainer">
-          <label>Level:</label>
-          <div id="level">1</div>
+          <label for="level">Level:</label>
+          <input id="level" type="text" />
         </div>
         <div class="infoContainer">
-          <label>Experience:</label>
-          <div id="experienceContainer">
-            <div id="currentExperience">0</div>
-            /
-            <div id="requiredExperience">1000</div>
-          </div>
+          <label for="experience">Experience:</label>
+          <input id="experience" type="text" />
         </div>
       </div>
 
@@ -497,6 +493,27 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 onClick="toggleDisplay('#spells')">Spells</h2>
+
+      <div class="section" id="spells">
+        <div class="spellsContainer">
+          <div class="spellsContainerHeader">
+            <div class="slotsTotal">
+              <label>Total Slots</label>
+              <div>∞</div>
+            </div>
+            <div class="spellLevel">Cantrips</div>
+            <div class="slotsExpended">
+              <label>Slots Used</label>
+              <div>∞</div>
+            </div>
+          </div>
+          <div class="button" id="addSpell" onclick="addSpell(event)">
+            Add Spell
           </div>
         </div>
       </div>

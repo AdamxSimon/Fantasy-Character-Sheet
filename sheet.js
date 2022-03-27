@@ -9,9 +9,8 @@ async function save() {
   localStorage.setItem("race", $("#race").val());
   localStorage.setItem("class", $("#class").val());
   localStorage.setItem("background", $("#background").val());
-  localStorage.setItem("level", $("#level").html());
-  localStorage.setItem("currentExperience", $("#currentExperience").html());
-  localStorage.setItem("requiredExperience", $("#requiredExperience").html());
+  localStorage.setItem("level", $("#level").val());
+  localStorage.setItem("experience", $("#experience").val());
 
   // Attributes
 
@@ -162,8 +161,7 @@ async function load() {
   $("#class").val(localStorage.getItem("class"));
   $("#background").val(localStorage.getItem("background"));
   $("#level").val(localStorage.getItem("level"));
-  $("#currentExperience").val(localStorage.getItem("currentExperience"));
-  $("#requiredExperience").val(localStorage.getItem("requiredExperience"));
+  $("#experience").val(localStorage.getItem("experience"));
 
   // Attributes
 
@@ -451,6 +449,10 @@ function equip(button) {
       $(equipment).find(".properties").val()
     );
   }
+}
+
+function addSpell(event) {
+  console.log(event.target);
 }
 
 function roll(die) {

@@ -291,6 +291,52 @@ td > input {
   align-items: center;
 }
 
+.spellsContainer {
+  height: fit-content;
+  max-height: 500px;
+}
+
+.spellsContainerHeader {
+  height: 50px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slotsTotal,
+.slotsExpended {
+  height: 100%;
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.slotsTotal > label,
+.slotsExpended > label {
+  text-decoration: underline;
+}
+
+.slotsTotal > *,
+.slotsExpended > * {
+  color: black;
+}
+
+.spellLevel {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+}
+
+#addSpell {
+  width: auto;
+  margin-top: 8px;
+  margin-bottom: 0px;
+}
+
 .die {
   height: 120px;
   width: 120px;
