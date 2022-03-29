@@ -60,6 +60,7 @@ input[type="checkbox"] {
 
 hr {
   width: 100%;
+  background-color: white;
 }
 
 textarea {
@@ -79,6 +80,10 @@ textarea {
 /* Master Animations */
 
 input[type="text"]:hover {
+  outline: 2px solid white;
+}
+
+input[type="number"]:hover {
   outline: 2px solid white;
 }
 
@@ -106,12 +111,10 @@ input[type="text"]:hover {
 }
 
 #experienceContainer,
-.attributePointsAvailableContainer,
 .proficiencyBonusContainer {
   display: flex;
 }
 
-.attributePointsAvailableContainer > label,
 .proficiencyBonusContainer > label {
   margin-right: 4px;
 }
@@ -175,6 +178,15 @@ input[type="text"]:hover {
   font-weight: bold;
 }
 
+.proficiencyBonusContainer {
+  margin-bottom: 32px;
+  align-items: baseline;
+}
+
+#proficiencyBonus {
+  width: 40px;
+}
+
 #skills {
   grid-row-gap: 20px;
 }
@@ -204,7 +216,6 @@ input[type="text"]:hover {
   width: 72px;
   border: 2px solid white;
   border-radius: 8px;
-  margin-bottom: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -331,10 +342,47 @@ td > input {
   color: black;
 }
 
-#addSpell {
+.spell {
+  width: 100%;
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.spellNameContainer,
+.spellOptionsContainer {
+  display: flex;
+}
+
+.spellName {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.spellDescription {
+  height: 120px;
+}
+
+.spellOptionsContainer > .button {
+  margin-left: 8px;
+}
+
+#addSpell,
+#addSpellLevel {
   width: auto;
   margin-top: 8px;
   margin-bottom: 0px;
+}
+
+#addSpell {
+  margin-bottom: 8px;
+}
+
+.slots,
+.slotsUsed {
+  width: 40px;
+  text-align: center;
 }
 
 .die {

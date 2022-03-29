@@ -24,6 +24,8 @@ async function save() {
 
   // Skills
 
+  localStorage.setItem("proficiencyBonus", $("#proficiencyBonus").val());
+
   $(".skillContainer").each((index, element) => {
     localStorage.setItem(element.id, $("#" + element.id).attr("active"));
   });
@@ -183,6 +185,8 @@ async function load() {
 
   // Skills
 
+  $("#proficiencyBonus").val(localStorage.getItem("proficiencyBonus"));
+
   $(".skillContainer").each((index, element) => {
     if (localStorage.getItem(element.id) === "true") {
       $("#" + element.id).toggleClass("active");
@@ -312,7 +316,7 @@ function updateAttributeModifier(attributeID, modID) {
 }
 
 function updateSkillModifiers() {
-  const proficiencyBonus = +$(".proficiencyBonus").html();
+  const proficiencyBonus = +$("#proficiencyBonus").val();
   let newValue;
 
   $(".skillContainer").each((index, element) => {
@@ -452,7 +456,55 @@ function equip(button) {
 }
 
 function addSpell(event) {
-  console.log(event.target);
+  const container = event.target.parentNode;
+
+  const spell = document.createElement("div");
+  spell.className = "spell";
+  spell.innerHTML = `<div class="spell">
+  <div class="spellNameContainer">
+  <input type="checkbox" />
+  <input class="spellName" type="text" />
+  </div>
+
+  <textarea class="spellDescription" style="display:none;"></textarea>
+
+  <div class="spellOptionsContainer">
+  <div class="button" onclick="remove(this)">Remove</div>
+  <div class="button" onclick="toggleDetails(this)">Details</div>
+  <div class="button">Cast</div>
+  </div>
+  </div>`;
+
+  container.insertBefore(spell, event.target);
+}
+
+function toggleDetails(button) {
+  const spell = button.parentNode.parentNode;
+  $(spell).find(".spellDescription").toggle("slow");
+}
+
+function addSpellLevel(event) {
+  const container = event.target.parentNode;
+  const children = container.children.length;
+
+  const spellLevel = document.createElement("div");
+  spellLevel.className = "spellsContainer";
+  spellLevel.innerHTML = `<div class="spellsContainerHeader">
+                          <div class="slotsTotal">
+                            <label>Total Slots</label>
+                            <input class="slots" type="text" />
+                          </div>
+                          <div class="spellLevel">Level ${children - 1}</div>
+                          <div class="slotsExpended">
+                            <label>Slots Used</label>
+                            <input class="slotsUsed" type="text" />
+                          </div>
+                        </div>
+                        <div class="button" id="addSpell" onclick="addSpell(event)">
+                          Add Spell
+                        </div>`;
+
+  container.insertBefore(spellLevel, event.target);
 }
 
 function roll(die) {
@@ -503,6 +555,10 @@ $("input").change(() => {
         $("#message").html("");
       }, 3000);
     });
+});
+
+$("#proficiencyBonus").change(() => {
+  updateSkillModifiers();
 });
 
 $("button").click(() => {

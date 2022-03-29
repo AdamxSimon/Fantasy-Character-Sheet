@@ -51,11 +51,6 @@
 
       <h2 onClick="toggleDisplay('#attributes')">Attributes</h2>
 
-      <div class="attributePointsAvailableContainer">
-        <label>Points Available:</label>
-        <div class="attributePointsAvailable"></div>
-      </div>
-
       <div class="section" id="attributes">
         <div class="attributeContainer">
           <label>Strength</label>
@@ -142,174 +137,176 @@
         </div>
       </div>
 
-      <h2 onClick="toggleDisplay('#skills')">Skills</h2>
+      <h2 onClick="toggleDisplay('#skillsSection')">Skills</h2>
 
-      <div class="proficiencyBonusContainer">
-        <label>Proficiency Bonus:</label>
-        <div class="proficiencyBonus">+2</div>
-      </div>
+      <div id="skillsSection">
+        <div class="proficiencyBonusContainer">
+          <label>Proficiency Bonus:</label>
+          <input id="proficiencyBonus" type="number" />
+        </div>
 
-      <div class="section" id="skills">
-        <div class="skillContainer" id="acrobatics">
-          <label>Acrobatics</label>
-          <div class="skillModifier" id="acrobaticsModifier"></div>
-          <div class="relevantAttributeContainer">
-            (
-            <div class="relevantAttribute">Dexterity</div>
-            )
+        <div class="section" id="skills">
+          <div class="skillContainer" id="acrobatics">
+            <label>Acrobatics</label>
+            <div class="skillModifier" id="acrobaticsModifier"></div>
+            <div class="relevantAttributeContainer">
+              (
+              <div class="relevantAttribute">Dexterity</div>
+              )
+            </div>
           </div>
-        </div>
-        <div class="skillContainer" id="animalHandling">
-          <label>Animal Handling</label>
-          <div class="skillModifier" id="animalHandlingModifier"></div>
-          <div class="relevantAttributeContainer">
-            (
-            <div class="relevantAttribute">Wisdom</div>
-            )
+          <div class="skillContainer" id="animalHandling">
+            <label>Animal Handling</label>
+            <div class="skillModifier" id="animalHandlingModifier"></div>
+            <div class="relevantAttributeContainer">
+              (
+              <div class="relevantAttribute">Wisdom</div>
+              )
+            </div>
           </div>
-        </div>
-        <div class="skillContainer" id="arcana">
-          <label>Arcana</label>
-          <div class="skillModifier" id="arcanaModifier"></div>
-          <div class="relevantAttributeContainer">
-            (
-            <div class="relevantAttribute">Intelligence</div>
-            )
+          <div class="skillContainer" id="arcana">
+            <label>Arcana</label>
+            <div class="skillModifier" id="arcanaModifier"></div>
+            <div class="relevantAttributeContainer">
+              (
+              <div class="relevantAttribute">Intelligence</div>
+              )
+            </div>
           </div>
-        </div>
-        <div class="skillContainer" id="athletics">
-          <label>Athletics</label>
-          <div class="skillModifier" id="athleticsModifier"></div>
-          <div class="relevantAttributeContainer">
-            (
-            <div class="relevantAttribute">Strength</div>
-            )
+          <div class="skillContainer" id="athletics">
+            <label>Athletics</label>
+            <div class="skillModifier" id="athleticsModifier"></div>
+            <div class="relevantAttributeContainer">
+              (
+              <div class="relevantAttribute">Strength</div>
+              )
+            </div>
           </div>
-        </div>
-        <div class="skillContainer" id="deception">
-          <label>Deception</label>
-          <div class="skillModifier" id="deceptionModifier"></div>
-          <div class="relevantAttributeContainer">
-            (
-            <div class="relevantAttribute">Charisma</div>
-            )
+          <div class="skillContainer" id="deception">
+            <label>Deception</label>
+            <div class="skillModifier" id="deceptionModifier"></div>
+            <div class="relevantAttributeContainer">
+              (
+              <div class="relevantAttribute">Charisma</div>
+              )
+            </div>
           </div>
-        </div>
-        <div class="skillContainer" id="history">
-          <label>History</label>
-          <div class="skillModifier" id="historyModifier"></div>
-          <div class="relevantAttributeContainer">
-            (
-            <div class="relevantAttribute">Intelligence</div>
-            )
+          <div class="skillContainer" id="history">
+            <label>History</label>
+            <div class="skillModifier" id="historyModifier"></div>
+            <div class="relevantAttributeContainer">
+              (
+              <div class="relevantAttribute">Intelligence</div>
+              )
+            </div>
           </div>
-        </div>
-        <div class="skillContainer" id="insight">
-          <label>Insight</label>
-          <div class="skillModifier" id="insightModifier"></div>
-          <div class="relevantAttributeContainer">
-            (
-            <div class="relevantAttribute">Wisdom</div>
-            )
+          <div class="skillContainer" id="insight">
+            <label>Insight</label>
+            <div class="skillModifier" id="insightModifier"></div>
+            <div class="relevantAttributeContainer">
+              (
+              <div class="relevantAttribute">Wisdom</div>
+              )
+            </div>
           </div>
-        </div>
-        <div class="skillContainer" id="intimidation">
-          <label>Intimidation</label>
-          <div class="skillModifier" id="intimidationModifier"></div>
-          <div class="relevantAttributeContainer">
-            (
-            <div class="relevantAttribute">Charisma</div>
-            )
+          <div class="skillContainer" id="intimidation">
+            <label>Intimidation</label>
+            <div class="skillModifier" id="intimidationModifier"></div>
+            <div class="relevantAttributeContainer">
+              (
+              <div class="relevantAttribute">Charisma</div>
+              )
+            </div>
           </div>
-        </div>
-        <div class="skillContainer" id="investigation">
-          <label>Investigation</label>
-          <div class="skillModifier" id="investigationModifier"></div>
-          <div class="relevantAttributeContainer">
-            (
-            <div class="relevantAttribute">Intelligence</div>
-            )
+          <div class="skillContainer" id="investigation">
+            <label>Investigation</label>
+            <div class="skillModifier" id="investigationModifier"></div>
+            <div class="relevantAttributeContainer">
+              (
+              <div class="relevantAttribute">Intelligence</div>
+              )
+            </div>
           </div>
-        </div>
-        <div class="skillContainer" id="medicine">
-          <label>Medicine</label>
-          <div class="skillModifier" id="medicineModifier"></div>
-          <div class="relevantAttributeContainer">
-            (
-            <div class="relevantAttribute">Wisdom</div>
-            )
+          <div class="skillContainer" id="medicine">
+            <label>Medicine</label>
+            <div class="skillModifier" id="medicineModifier"></div>
+            <div class="relevantAttributeContainer">
+              (
+              <div class="relevantAttribute">Wisdom</div>
+              )
+            </div>
           </div>
-        </div>
-        <div class="skillContainer" id="nature">
-          <label>Nature</label>
-          <div class="skillModifier" id="natureModifier"></div>
-          <div class="relevantAttributeContainer">
-            (
-            <div class="relevantAttribute">Intelligence</div>
-            )
+          <div class="skillContainer" id="nature">
+            <label>Nature</label>
+            <div class="skillModifier" id="natureModifier"></div>
+            <div class="relevantAttributeContainer">
+              (
+              <div class="relevantAttribute">Intelligence</div>
+              )
+            </div>
           </div>
-        </div>
-        <div class="skillContainer" id="perception">
-          <label>Perception</label>
-          <div class="skillModifier" id="perceptionModifier"></div>
-          <div class="relevantAttributeContainer">
-            (
-            <div class="relevantAttribute">Wisdom</div>
-            )
+          <div class="skillContainer" id="perception">
+            <label>Perception</label>
+            <div class="skillModifier" id="perceptionModifier"></div>
+            <div class="relevantAttributeContainer">
+              (
+              <div class="relevantAttribute">Wisdom</div>
+              )
+            </div>
           </div>
-        </div>
-        <div class="skillContainer" id="performance">
-          <label>Performance</label>
-          <div class="skillModifier" id="performanceModifier"></div>
-          <div class="relevantAttributeContainer">
-            (
-            <div class="relevantAttribute">Charisma</div>
-            )
+          <div class="skillContainer" id="performance">
+            <label>Performance</label>
+            <div class="skillModifier" id="performanceModifier"></div>
+            <div class="relevantAttributeContainer">
+              (
+              <div class="relevantAttribute">Charisma</div>
+              )
+            </div>
           </div>
-        </div>
-        <div class="skillContainer" id="persuasion">
-          <label>Persuasion</label>
-          <div class="skillModifier" id="persuasionModifier"></div>
-          <div class="relevantAttributeContainer">
-            (
-            <div class="relevantAttribute">Charisma</div>
-            )
+          <div class="skillContainer" id="persuasion">
+            <label>Persuasion</label>
+            <div class="skillModifier" id="persuasionModifier"></div>
+            <div class="relevantAttributeContainer">
+              (
+              <div class="relevantAttribute">Charisma</div>
+              )
+            </div>
           </div>
-        </div>
-        <div class="skillContainer" id="religion">
-          <label>Religion</label>
-          <div class="skillModifier" id="religionModifier"></div>
-          <div class="relevantAttributeContainer">
-            (
-            <div class="relevantAttribute">Intelligence</div>
-            )
+          <div class="skillContainer" id="religion">
+            <label>Religion</label>
+            <div class="skillModifier" id="religionModifier"></div>
+            <div class="relevantAttributeContainer">
+              (
+              <div class="relevantAttribute">Intelligence</div>
+              )
+            </div>
           </div>
-        </div>
-        <div class="skillContainer" id="sleightOfHand">
-          <label>Sleight of Hand</label>
-          <div class="skillModifier" id="sleightOfHandModifier"></div>
-          <div class="relevantAttributeContainer">
-            (
-            <div class="relevantAttribute">Dexterity</div>
-            )
+          <div class="skillContainer" id="sleightOfHand">
+            <label>Sleight of Hand</label>
+            <div class="skillModifier" id="sleightOfHandModifier"></div>
+            <div class="relevantAttributeContainer">
+              (
+              <div class="relevantAttribute">Dexterity</div>
+              )
+            </div>
           </div>
-        </div>
-        <div class="skillContainer" id="stealth">
-          <label>Stealth</label>
-          <div class="skillModifier" id="stealthModifier"></div>
-          <div class="relevantAttributeContainer">
-            (
-            <div class="relevantAttribute">Dexterity</div>
-            )
+          <div class="skillContainer" id="stealth">
+            <label>Stealth</label>
+            <div class="skillModifier" id="stealthModifier"></div>
+            <div class="relevantAttributeContainer">
+              (
+              <div class="relevantAttribute">Dexterity</div>
+              )
+            </div>
           </div>
-        </div>
-        <div class="skillContainer" id="survival">
-          <label>Survival</label>
-          <div class="skillModifier" id="survivalModifier"></div>
-          <div class="relevantAttributeContainer">
-            (
-            <div class="relevantAttribute">Wisdom</div>
-            )
+          <div class="skillContainer" id="survival">
+            <label>Survival</label>
+            <div class="skillModifier" id="survivalModifier"></div>
+            <div class="relevantAttributeContainer">
+              (
+              <div class="relevantAttribute">Wisdom</div>
+              )
+            </div>
           </div>
         </div>
       </div>
@@ -515,6 +512,10 @@
           <div class="button" id="addSpell" onclick="addSpell(event)">
             Add Spell
           </div>
+        </div>
+
+        <div class="button" id="addSpellLevel" onclick="addSpellLevel(event)">
+          Add Level
         </div>
       </div>
 
