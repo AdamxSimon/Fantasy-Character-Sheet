@@ -19,6 +19,7 @@ html,
 body {
   height: 100%;
   width: 100%;
+  border-radius: 0px;
 }
 
 #sheet > * {
@@ -214,6 +215,8 @@ input[type="number"]:hover {
 .button {
   height: 32px;
   width: 72px;
+  min-width: fit-content;
+  padding: 4px;
   border: 2px solid white;
   border-radius: 8px;
   display: flex;
@@ -230,12 +233,15 @@ input[type="number"]:hover {
 
 table {
   width: 100%;
-  table-layout: fixed;
+  table-layout: auto;
   position: relative;
 }
 
 th {
   background: white;
+  border: 2px solid white;
+  border-radius: 4px;
+  border-collapse: collapse;
   position: sticky;
   top: 0;
   color: black;
@@ -243,6 +249,7 @@ th {
 
 th,
 td {
+  min-width: max-content;
   padding: 4px;
   text-align: center;
 }
@@ -363,6 +370,7 @@ td > input {
 
 .spellDescription {
   height: 120px;
+  min-width: 172px;
 }
 
 .spellOptionsContainer > .button {
