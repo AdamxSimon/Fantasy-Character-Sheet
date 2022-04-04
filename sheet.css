@@ -368,7 +368,7 @@ td > input {
   margin-right: 8px;
 }
 
-.spellDescription {
+.spell > .description {
   height: 120px;
   min-width: 172px;
 }

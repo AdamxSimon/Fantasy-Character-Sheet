@@ -136,6 +136,28 @@ async function save() {
   localStorage.setItem("maxHitPoints", $("#maxHitPoints").val());
   localStorage.setItem("hitDice", $("#hitDice").val());
 
+  // Spells
+
+  const spells = [];
+
+  $(".spell").each((index, element) => {
+    const spell = {};
+
+    $(element).find("[type=checkbox]").hasClass("active")
+      ? (spell.active = true)
+      : (spell.active = false);
+
+    spell.name = $(element).find(".name").val();
+
+    spell.description = $(element).find(".description").val();
+
+    spell.level = $(element).parent().attr("id");
+
+    spells.push(spell);
+  });
+
+  localStorage.setItem("spells", JSON.stringify(spells));
+
   // Notes
 
   localStorage.setItem("notes", $("#notesInput").val());
@@ -270,6 +292,70 @@ async function load() {
   $("#maxHitPoints").val(localStorage.getItem("maxHitPoints"));
   $("#hitDice").val(localStorage.getItem("hitDice"));
 
+  // Spells
+
+  const spells = JSON.parse(localStorage.getItem("spells"));
+  let spellLevels = 0;
+
+  for (spell of spells) {
+    if (spell.level > spellLevels) {
+      const container = $("#spells").get(0);
+      const children = container.children.length;
+
+      const spellLevel = document.createElement("div");
+      spellLevel.id = children - 1;
+      spellLevel.className = "spellsContainer";
+      spellLevel.innerHTML = `<div class="spellsContainerHeader">
+                          <div class="slotsTotal">
+                            <label>Total Slots</label>
+                            <input class="slots" type="text" />
+                          </div>
+                          <div class="spellLevel">Level ${children - 1}</div>
+                          <div class="slotsExpended">
+                            <label>Slots Used</label>
+                            <input class="slotsUsed" type="text" />
+                          </div>
+                        </div>
+                        <div class="button" id="addSpell" onclick="addSpell(event)">
+                          Add Spell
+                        </div>`;
+
+      container.insertBefore(spellLevel, $("#addSpellLevel").get(0));
+      spellLevels++;
+    }
+  }
+
+  $(".spellsContainer").each((index, element) => {
+    for (s of spells) {
+      if (s.level === $(element).attr("id")) {
+        const container = $(element).get(0);
+
+        const spell = document.createElement("div");
+        spell.className = "spell";
+        spell.innerHTML = `<div class="spellNameContainer">
+      <input type="checkbox" onclick="toggleActive(this)" />
+      <input class="name" type="text" />
+      </div>
+    
+      <textarea class="description" style="display:none;"></textarea>
+    
+      <div class="spellOptionsContainer">
+      <div class="button" onclick="removeSpell(this)">Remove</div>
+      <div class="button" onclick="toggleDetails(this)">Details</div>
+      <div class="button">Cast</div>
+      </div>`;
+
+        s.active
+          ? $(spell).find("[type=checkbox]").toggleClass("active")
+          : null;
+        $(spell).find(".name").val(s.name);
+        $(spell).find(".description").val(s.description);
+
+        container.insertBefore(spell, $(element).find("#addSpell").get(0));
+      }
+    }
+  });
+
   // Notes
 
   $("#notesInput").val(localStorage.getItem("notes"));
@@ -291,6 +377,10 @@ async function load() {
 
 function toggleDisplay(section) {
   $(section).toggle("slow");
+}
+
+function toggleActive(element) {
+  $(element).toggleClass("active");
 }
 
 function decrement(id) {
@@ -410,6 +500,11 @@ function remove(button) {
   row.parentNode.removeChild(row);
 }
 
+function removeSpell(button) {
+  const row = button.parentNode.parentNode;
+  row.parentNode.removeChild(row);
+}
+
 function equip(button) {
   const equipment = button.parentNode.parentNode.parentNode;
 
@@ -460,19 +555,17 @@ function addSpell(event) {
 
   const spell = document.createElement("div");
   spell.className = "spell";
-  spell.innerHTML = `<div class="spell">
-  <div class="spellNameContainer">
-  <input type="checkbox" />
-  <input class="spellName" type="text" />
+  spell.innerHTML = `<div class="spellNameContainer">
+  <input type="checkbox" onclick="toggleActive(this)" />
+  <input class="name" type="text" />
   </div>
 
-  <textarea class="spellDescription" style="display:none;"></textarea>
+  <textarea class="description" style="display:none;"></textarea>
 
   <div class="spellOptionsContainer">
-  <div class="button" onclick="remove(this)">Remove</div>
+  <div class="button" onclick="removeSpell(this)">Remove</div>
   <div class="button" onclick="toggleDetails(this)">Details</div>
   <div class="button">Cast</div>
-  </div>
   </div>`;
 
   container.insertBefore(spell, event.target);
@@ -480,7 +573,7 @@ function addSpell(event) {
 
 function toggleDetails(button) {
   const spell = button.parentNode.parentNode;
-  $(spell).find(".spellDescription").toggle("slow");
+  $(spell).find(".description").toggle("slow");
 }
 
 function addSpellLevel(event) {
@@ -488,6 +581,7 @@ function addSpellLevel(event) {
   const children = container.children.length;
 
   const spellLevel = document.createElement("div");
+  spellLevel.id = children - 1;
   spellLevel.className = "spellsContainer";
   spellLevel.innerHTML = `<div class="spellsContainerHeader">
                           <div class="slotsTotal">
