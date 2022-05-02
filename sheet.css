@@ -197,6 +197,7 @@ input[type="number"]:hover {
 }
 
 .savingThrowContainer > label,
+.savingThrowModifier,
 .skillContainer > label,
 .skillModifier,
 .relevantAttributeContainer {
