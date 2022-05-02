@@ -121,6 +121,7 @@ input[type="number"]:hover {
 }
 
 #attributes,
+#savingThrows,
 #skills,
 #equipment,
 #dice,
@@ -132,6 +133,7 @@ input[type="number"]:hover {
 }
 
 .attributeContainer,
+.savingThrowContainer,
 .skillContainer,
 .equipmentSlot,
 .combatContainer {
@@ -146,6 +148,7 @@ input[type="number"]:hover {
 
 .infoContainer > label,
 .attributeContainer > label,
+.savingThrowContainer > label,
 .skillContainer > label,
 .slotContainer > label,
 .combatContainer > label,
@@ -161,6 +164,7 @@ input[type="number"]:hover {
 }
 
 .attributePoints,
+.savingThrowModifier,
 .skillModifier {
   font-size: 36px;
   font-weight: bold;
@@ -192,6 +196,7 @@ input[type="number"]:hover {
   grid-row-gap: 20px;
 }
 
+.savingThrowContainer > label,
 .skillContainer > label,
 .skillModifier,
 .relevantAttributeContainer {

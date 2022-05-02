@@ -30,6 +30,12 @@ async function save() {
     localStorage.setItem(element.id, $("#" + element.id).attr("active"));
   });
 
+  // Saving Throws
+
+  $(".savingThrowContainer").each((index, element) => {
+    localStorage.setItem(element.id, $("#" + element.id).attr("active"));
+  });
+
   // Equipment
 
   // Weapons
@@ -218,6 +224,17 @@ async function load() {
 
   updateSkillModifiers();
 
+  // Saving Throws
+
+  $(".savingThrowContainer").each((index, element) => {
+    if (localStorage.getItem(element.id) === "true") {
+      $("#" + element.id).toggleClass("active");
+      $("#" + element.id).attr("active", true);
+    }
+  });
+
+  updateSavingThrowModifiers();
+
   // Weapons
 
   const weapons = JSON.parse(localStorage.getItem("weapons"));
@@ -405,8 +422,43 @@ function updateAttributeModifier(attributeID, modID) {
   }
 }
 
+function updateSavingThrowModifiers() {
+  const proficiencyBonus = +$("#proficiencyBonus").val();
+
+  let newValue;
+
+  $(".savingThrowContainer").each((index, element) => {
+    if ($("#" + element.id).attr("active") === "true") {
+      newValue =
+        +$(
+          "#" +
+            $("#" + element.id)
+              .find(".relevantAttribute")
+              .html() +
+            "Modifier"
+        ).html() + proficiencyBonus;
+      if (newValue >= 0) {
+        $("#" + element.id + "Modifier").html("+" + newValue);
+      } else {
+        $("#" + element.id + "Modifier").html(newValue);
+      }
+    } else {
+      $("#" + element.id + "Modifier").html(
+        $(
+          "#" +
+            $("#" + element.id)
+              .find(".relevantAttribute")
+              .html() +
+            "Modifier"
+        ).html()
+      );
+    }
+  });
+}
+
 function updateSkillModifiers() {
   const proficiencyBonus = +$("#proficiencyBonus").val();
+
   let newValue;
 
   $(".skillContainer").each((index, element) => {
@@ -653,10 +705,36 @@ $("input").change(() => {
 
 $("#proficiencyBonus").change(() => {
   updateSkillModifiers();
+  updateSavingThrowModifiers();
 });
 
 $("button").click(() => {
   updateSkillModifiers();
+  updateSavingThrowModifiers();
+  save()
+    .then(() => {
+      setTimeout(() => {
+        $("#message").html("");
+      }, 2000);
+    })
+    .catch(() => {
+      setTimeout(() => {
+        $("#message").html("Unable To Save");
+      }, 2000);
+      setTimeout(() => {
+        $("#message").html("");
+      }, 3000);
+    });
+});
+
+$(".savingThrowContainer").click((event) => {
+  $(event.target).toggleClass("active");
+  $(event.target).attr(
+    "active",
+    $(event.target).attr("active") === "true" ? "false" : "true"
+  );
+  updateSavingThrowModifiers();
+
   save()
     .then(() => {
       setTimeout(() => {
@@ -703,6 +781,7 @@ $("input[type=checkbox]").click((event) => {
 
 $(".button").click(() => {
   updateSkillModifiers();
+  updateSavingThrowModifiers();
   save()
     .then(() => {
       setTimeout(() => {
